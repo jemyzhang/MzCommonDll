@@ -178,7 +178,7 @@ namespace sqlite3x {
 		std::wstring getcolname16(int index);
 	};
 
-	class COMMON_API database_error : public std::runtime_error {
+	class database_error : public std::runtime_error {
 	public:
 		database_error(const char *msg);
 		database_error(sqlite3_connection &con);

@@ -108,7 +108,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)UiCommon\*.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzConfig\MzConfig.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzCommon.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzCommonDll.h $(ProjectDir)include\&#x0D;&#x0A;"
+				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp $(ProjectDir)include\&#x0D;&#x0A;rem copy $(ProjectDir)UiCommon\*.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzConfig\MzConfig.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzCommon.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzCommonDll.h $(ProjectDir)include\&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -213,74 +213,6 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
-		</Filter>
-		<Filter
-			Name="UiCommon"
-			>
-			<File
-				RelativePath=".\UiCommon\UiCommonRes.rc"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiCommonResource.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiFileDialogWnd.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiFileDialogWnd.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiIconButton.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiIconButton.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiImage.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiImage.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiInstructionDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiInstructionDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiSingleOption.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiSingleOption.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiSwitchOption.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiSwitchOption.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiWaitMessageDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UiCommon\UiWaitMessageDlg.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="DataBase"
