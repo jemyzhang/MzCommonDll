@@ -6,26 +6,26 @@
 * @ver. 1.2
 * @changelog
 *  ver.1.0 初始化程序
-*  ver.1.1 创建MzConfig类，简化键值读写
+*  ver.1.1 创建cMzConfig类，简化键值读写
 *  ver.1.2 初始化读取初始值时，当发现没有值时则创建，防止出现空白配置文件
 */
 
-#include "MzConfig.h"
+#include "cMzConfig.h"
 
 #include "ReadWriteIni.h"
-#include <MzCommon.h>
-using namespace MzCommon;
+#include <cMzCommon.h>
+using namespace cMzCommon;
 
 #pragma comment(lib,"PlatformApi.lib")
 
-MzConfig::~MzConfig(){
+cMzConfig::~cMzConfig(){
 	if(!_bupdate) return;
 
 	if(!checkKey()) return;
 	IniWriteInt(_mainKey,_subKey,_value,gs_inifile);
 }
 
-void MzConfig::InitKey(TCHAR * mainKey, TCHAR * subKey, DWORD defaultVal){
+void cMzConfig::InitKey(TCHAR * mainKey, TCHAR * subKey, DWORD defaultVal){
 	_mainKey = mainKey;
 	_subKey = subKey;
 	_defaultValue = defaultVal;

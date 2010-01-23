@@ -7,27 +7,27 @@
  * @ver. 1.1
  * @changelog
  *  ver.1.0 初始化程序
- *  ver.1.1 创建MzConfig类，简化键值读写
- *  ver.1.2 MzConfig在解构时再写入配置，减少配置的文件读写
+ *  ver.1.1 创建cMzConfig类，简化键值读写
+ *  ver.1.2 cMzConfig在解构时再写入配置，减少配置的文件读写
 */
 
-#include <MzCommonDll.h>
+#include <cMzCommonDll.h>
 
 //配置文件路径
 //由AppConfigIni初始化
 static TCHAR * gs_inifile = NULL;
 
 //配置文件基本读写类
-class COMMON_API MzConfig{
+class COMMON_API cMzConfig{
 public:
-	MzConfig(){
+	cMzConfig(){
 		_mainKey = NULL;
 		_subKey = NULL;
 		_defaultValue = 0;
 		_value = 0;
 		_bupdate = false;
 	}
-	~MzConfig();
+	~cMzConfig();
 public:
 	void InitKey(TCHAR * mainKey, TCHAR * subKey, DWORD defaultVal = 0);
 public:
@@ -72,7 +72,7 @@ protected:
 	virtual void InitIniKey();
 public:
 	//config版本信息
-	MzConfig IniConfigVersion;
+	cMzConfig IniConfigVersion;
 private:
 	wchar_t ini_path[MAX_PATH];
 };

@@ -1,8 +1,8 @@
-#include "MzCommon.h"
+#include "cMzCommon.h"
 #include <fstream>
 using namespace std;
 
-void MzCommonDateTime::TimetToSystemTime( time_t t, LPSYSTEMTIME pst )
+void cMzCommonDateTime::TimetToSystemTime( time_t t, LPSYSTEMTIME pst )
 {
 	FILETIME ft;
 	LONGLONG ll = Int32x32To64(t, 10000000) + 116444736000000000;
@@ -12,13 +12,13 @@ void MzCommonDateTime::TimetToSystemTime( time_t t, LPSYSTEMTIME pst )
 	FileTimeToSystemTime( &ft, pst );
 }
 
-void MzCommonDateTime::TimetToLocalTime( time_t t, LPSYSTEMTIME pst )
+void cMzCommonDateTime::TimetToLocalTime( time_t t, LPSYSTEMTIME pst )
 {
 	t = t + 28800;
 	TimetToSystemTime(t,pst);
 }
 
-void MzCommonDateTime::SystemTimeToTimet( SYSTEMTIME st, time_t *pt )
+void cMzCommonDateTime::SystemTimeToTimet( SYSTEMTIME st, time_t *pt )
 {
 	FILETIME ft;
 	SystemTimeToFileTime( &st, &ft );
@@ -34,7 +34,7 @@ void MzCommonDateTime::SystemTimeToTimet( SYSTEMTIME st, time_t *pt )
 	*pt = (DWORD)((LONGLONG)(ui.QuadPart - 116444736000000000) / 10000000);
 }
 
-int MzCommonDateTime::getWeekDay(int year,int month, int day){
+int cMzCommonDateTime::getWeekDay(int year,int month, int day){
 	int D,M,Y,A; 
 	D = day; M = month; Y = year;
 	if((M==1)||(M==2)) //1,2月当作前一年的13,14月 
@@ -52,7 +52,7 @@ int MzCommonDateTime::getWeekDay(int year,int month, int day){
 
 int Days[12]={31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-int MzCommonDateTime::getDays(int year, int month){
+int cMzCommonDateTime::getDays(int year, int month){
 	int day = 0;
 	if(year < 1970 || (year > 2199)) return day;
 
@@ -63,7 +63,7 @@ int MzCommonDateTime::getDays(int year, int month){
 	return Days[month-1];
 }
 
-bool MzCommonDateTime::isLeapyear(int year){
+bool cMzCommonDateTime::isLeapyear(int year){
 	bool b_IsLeapYear = false;
 	if((year%4 == 0 && year%100 != 0) || (year%400 == 0))     
 	{   
@@ -78,7 +78,7 @@ bool MzCommonDateTime::isLeapyear(int year){
 	return b_IsLeapYear;
 }
 
-void MzCommonDateTime::OneDayDate(SYSTEMTIME &date,bool isYesterday){
+void cMzCommonDateTime::OneDayDate(SYSTEMTIME &date,bool isYesterday){
 	isLeapyear(date.wYear);
 	if(isYesterday){
 		date.wDay --;
@@ -105,7 +105,7 @@ void MzCommonDateTime::OneDayDate(SYSTEMTIME &date,bool isYesterday){
 }
 
 //error: 1: year, 2: month, 4: day, 0: no error
-int MzCommonDateTime::checkDate(int year,int month, int day)   
+int cMzCommonDateTime::checkDate(int year,int month, int day)   
 {
 	int rc = 0;
 	if(year < 1970 || (year > 2199)) rc |= 1;
@@ -121,7 +121,7 @@ int MzCommonDateTime::checkDate(int year,int month, int day)
 	return rc;   
 } 
 
-void MzCommonC::newlinecpy(wchar_t** pdst, const wchar_t* src, size_t nsize){
+void cMzCommonC::newlinecpy(wchar_t** pdst, const wchar_t* src, size_t nsize){
 	if(*pdst) delete *pdst;
 	wchar_t* newdst;
 	size_t _strlength = lstrlen(src);
@@ -147,7 +147,7 @@ void MzCommonC::newlinecpy(wchar_t** pdst, const wchar_t* src, size_t nsize){
 	*pdst = newdst;
 }
 
-void MzCommonC::newstrcpy(wchar_t** pdst,const wchar_t* src, size_t nsize){
+void cMzCommonC::newstrcpy(wchar_t** pdst,const wchar_t* src, size_t nsize){
 	if(*pdst) delete *pdst;
 	wchar_t* newdst;
 	if(nsize == 0){
@@ -167,7 +167,7 @@ void MzCommonC::newstrcpy(wchar_t** pdst,const wchar_t* src, size_t nsize){
 	*pdst = newdst;
 }
 
-wchar_t* MzCommonC::removeSpecStr(wchar_t* str, wchar_t* spec){
+wchar_t* cMzCommonC::removeSpecStr(wchar_t* str, wchar_t* spec){
 	if(str == NULL || spec == NULL) return str;
 
 	int len_str = lstrlen(str);
@@ -200,7 +200,7 @@ wchar_t* MzCommonC::removeSpecStr(wchar_t* str, wchar_t* spec){
 	return resStr;
 }
 
-wchar_t* MzCommonC::removeWrap(wchar_t* dst, wchar_t* src){
+wchar_t* cMzCommonC::removeWrap(wchar_t* dst, wchar_t* src){
 	*dst = '\0';
 	if(src == NULL) return dst;
 	if(lstrlen(src) == 0) return dst;
@@ -223,7 +223,7 @@ wchar_t* MzCommonC::removeWrap(wchar_t* dst, wchar_t* src){
 	return dst;
 }
 
-wchar_t* MzCommonC::restoreWrap(wchar_t* dst, wchar_t* src){
+wchar_t* cMzCommonC::restoreWrap(wchar_t* dst, wchar_t* src){
 	*dst = '\0';
 	if(src == NULL) return dst;
 	if(lstrlen(src) == 0) return dst;
@@ -255,7 +255,7 @@ wchar_t* MzCommonC::restoreWrap(wchar_t* dst, wchar_t* src){
 	return dst;
 }
 
-TEXTENCODE_t MzCommonFile::getTextCode(TCHAR* filename)
+TEXTENCODE_t cMzCommonFile::getTextCode(TCHAR* filename)
 {
 	TEXTENCODE_t ret;
     if (FileExists(filename))
@@ -289,7 +289,7 @@ TEXTENCODE_t MzCommonFile::getTextCode(TCHAR* filename)
 	return ret;
 }
 
-wchar_t* MzCommonFile::chr2wch(const char* buffer, wchar_t** wbuf)
+wchar_t* cMzCommonFile::chr2wch(const char* buffer, wchar_t** wbuf)
 {
       size_t len = strlen(buffer); 
       size_t wlen = MultiByteToWideChar(CP_ACP, 0, (const char*)buffer, int(len), NULL, 0); 
@@ -300,8 +300,8 @@ wchar_t* MzCommonFile::chr2wch(const char* buffer, wchar_t** wbuf)
 	  return wBuf;
 } 
 
-wchar_t* MzCommonSystem::sVersion = 0;
-wchar_t* MzCommonSystem::getVersion(){
+wchar_t* cMzCommonSystem::sVersion = 0;
+wchar_t* cMzCommonSystem::getVersion(){
 	PLATFORMVERSION pv[4];
 	SystemParametersInfo(SPI_GETPLATFORMVERSION, sizeof(pv), pv, SPIF_UPDATEINIFILE);
 	if(sVersion == 0) sVersion = new wchar_t[50];
@@ -309,7 +309,7 @@ wchar_t* MzCommonSystem::getVersion(){
 	return sVersion;
 }
 
-BOOL MzCommonSystem::getVersion(DWORD &Major,DWORD &Minor,DWORD &Major1,DWORD &Minor1){
+BOOL cMzCommonSystem::getVersion(DWORD &Major,DWORD &Minor,DWORD &Major1,DWORD &Minor1){
 	BOOL bRet = FALSE;
 	PLATFORMVERSION pv[4];
 	bRet = SystemParametersInfo(SPI_GETPLATFORMVERSION, sizeof(pv), pv, SPIF_UPDATEINIFILE);
@@ -320,7 +320,7 @@ BOOL MzCommonSystem::getVersion(DWORD &Major,DWORD &Minor,DWORD &Major1,DWORD &M
 	return bRet;
 }
 
-BOOL MzCommonSystem::requireVersion(DWORD Major,DWORD Minor,DWORD Major1,DWORD Minor1){
+BOOL cMzCommonSystem::requireVersion(DWORD Major,DWORD Minor,DWORD Major1,DWORD Minor1){
 	BOOL bRet = FALSE;
 	PLATFORMVERSION pv[4];
 	bRet = SystemParametersInfo(SPI_GETPLATFORMVERSION, sizeof(pv), pv, SPIF_UPDATEINIFILE);

@@ -27,7 +27,7 @@
 #define __SQLITE3X_HPP__
 
 #include <string>
-#include <MzCommonDll.h>
+#include <cMzCommonDll.h>
 
 namespace sqlite3x {
 	class COMMON_API sqlite3_connection {

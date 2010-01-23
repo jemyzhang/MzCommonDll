@@ -1,6 +1,6 @@
 #pragma once
 // include the MZFC library header file
-#include "MzCommonDll.h"
+#include <cMzCommonDll.h>
 
 #include <list>
 using std::list;
@@ -16,7 +16,7 @@ typedef enum TextEncode{
 #define LOADSTRING(uID)	MzLoadString(uID,LangresHandle)
 #define MZFC_WM_MESSAGE_QUIT	MZFC_WM_MESSAGE+0x100
 
-class COMMON_API MzCommonC
+class COMMON_API cMzCommonC
 {
 public:
 	//有长度限制的行字符串复制
@@ -58,7 +58,7 @@ public:
 	}
 };
 
-class COMMON_API MzCommonDateTime
+class COMMON_API cMzCommonDateTime
 {
 public:
 	static void waitms(unsigned int ms){
@@ -242,7 +242,7 @@ public:
 };
 
 //文件操作常用函数
-class COMMON_API MzCommonFile{
+class COMMON_API cMzCommonFile{
 public:
 	//检查文件夹是否存在，不存在则新建
 	static BOOL DirectoryExists_New(TCHAR* foldername){
@@ -255,7 +255,7 @@ public:
 	static CMzString CreateDirectoryByDate(TCHAR* parentdir,BOOL &result){
 		CMzString str = parentdir;
 		str = str + L"\\";
-		str = str + MzCommonDateTime::NowtoStr();
+		str = str + cMzCommonDateTime::NowtoStr();
 		result = DirectoryExists_New(str.C_Str());
 		return str;
 	}
@@ -390,7 +390,7 @@ typedef struct _PLATFORMVERSION
 }PLATFORMVERSION;
 #define SPI_GETPLATFORMVERSION 224
 
-class COMMON_API MzCommonSystem{
+class COMMON_API cMzCommonSystem{
 public:
 	//获取版本号字符串
 	static wchar_t* getVersion();
@@ -402,9 +402,9 @@ private:
 	static wchar_t* sVersion;
 };
 
-namespace MzCommon {
-	class File : public MzCommonFile {};
-	class DateTime : public MzCommonDateTime {};
-	class C : public MzCommonC { };
-	class MzSystem : public MzCommonSystem { };
+namespace cMzCommon {
+	class File : public cMzCommonFile {};
+	class DateTime : public cMzCommonDateTime {};
+	class C : public cMzCommonC { };
+	class MzSystem : public cMzCommonSystem { };
 };

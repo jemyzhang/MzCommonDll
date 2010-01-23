@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="MzCommon"
+	Name="cMzCommon"
 	ProjectGUID="{45F6FFBA-248C-45B8-A08A-22D38A7E4E9D}"
-	RootNamespace="MzCommon"
+	RootNamespace="cMzCommon"
 	Keyword="MFCDLLProj"
 	TargetFrameworkVersion="196613"
 	>
@@ -21,12 +21,12 @@
 			OutputDirectory="$(SolutionDir)\$(SolutionName)\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)\$(SolutionName)\$(ConfigurationName)\obj"
 			ConfigurationType="2"
-			UseOfMFC="1"
+			UseOfMFC="0"
 			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)UiCommon\*.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzConfig\MzConfig.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzCommon.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzCommonDll.h $(ProjectDir)include\&#x0D;&#x0A;"
+				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzConfig\cMzConfig.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzCommon.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzCommonDll.h $(ProjectDir)include\&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -68,6 +68,7 @@
 				Name="VCLinkerTool"
 				AdditionalOptions=" /SUBSYSTEM:WINDOWSCE,6.00"
 				AdditionalDependencies="mzfc.lib libsqlitece_s.lib"
+				OutputFile="$(ProjectDir)libs\$(ProjectName)d.dll"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)libs&quot;"
 			/>
 			<Tool
@@ -108,7 +109,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp $(ProjectDir)include\&#x0D;&#x0A;rem copy $(ProjectDir)UiCommon\*.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzConfig\MzConfig.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzCommon.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzCommonDll.h $(ProjectDir)include\&#x0D;&#x0A;"
+				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp $(ProjectDir)include\&#x0D;&#x0A;rem copy $(ProjectDir)UiCommon\*.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzConfig\MzConfig.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzCommon.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzCommonDll.h $(ProjectDir)include\&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -190,7 +191,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\MzCommon.cpp"
+				RelativePath=".\cMzCommon.cpp"
 				>
 			</File>
 		</Filter>
@@ -200,11 +201,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\MzCommon.h"
+				RelativePath=".\cMzCommon.h"
 				>
 			</File>
 			<File
-				RelativePath=".\MzCommonDll.h"
+				RelativePath=".\cMzCommonDll.h"
 				>
 			</File>
 		</Filter>
@@ -255,14 +256,14 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="MzConfig"
+			Name="cMzConfig"
 			>
 			<File
-				RelativePath=".\MzConfig\MzConfig.cpp"
+				RelativePath=".\cMzConfig\cMzConfig.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\MzConfig\MzConfig.h"
+				RelativePath=".\cMzConfig\cMzConfig.h"
 				>
 			</File>
 		</Filter>
