@@ -263,7 +263,7 @@ TEXTENCODE_t cMzCommonFile::getTextCode(TCHAR* filename)
 		fstream openfile;
         openfile.open(filename, ios::in | ios::binary);
         openfile.seekg(0, ios::beg);
-        char *code = new char[2];
+        char code[2];
         openfile.read(code, 2);
         openfile.close();
         

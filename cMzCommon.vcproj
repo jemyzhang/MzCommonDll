@@ -18,15 +18,15 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|M8SDK (ARMV4I)"
-			OutputDirectory="$(SolutionDir)\$(SolutionName)\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\$(SolutionName)\$(ConfigurationName)\obj"
+			OutputDirectory="$(SolutionDir)$(SolutionName)\bin\debug\"
+			IntermediateDirectory="$(SolutionDir)$(SolutionName)\obj\$(ProjectName)\debug\"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzConfig\cMzConfig.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzCommon.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzCommonDll.h $(ProjectDir)include\&#x0D;&#x0A;"
+				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp &quot;$(SolutionDir)$(SolutionName)\include\&quot;&#x0D;&#x0A;copy $(ProjectDir)cMzConfig\cMzConfig.h &quot;$(SolutionDir)$(SolutionName)\include\&quot;&#x0D;&#x0A;copy $(ProjectDir)cMzCommon.h &quot;$(SolutionDir)$(SolutionName)\include\&quot;&#x0D;&#x0A;copy $(ProjectDir)cMzCommonDll.h &quot;$(SolutionDir)$(SolutionName)\include\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -45,8 +45,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
-				AdditionalIncludeDirectories="&quot;$(ProJectDir)include&quot;"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);STANDARDSHELL_UI_MODEL;COMMON_EXPORTS"
+				AdditionalIncludeDirectories="$(SolutionDir)$(SolutionName)\include"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_USRDLL;$(ARCHFAM);$(_ARCHFAM_)"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -68,8 +68,11 @@
 				Name="VCLinkerTool"
 				AdditionalOptions=" /SUBSYSTEM:WINDOWSCE,6.00"
 				AdditionalDependencies="mzfc.lib libsqlitece_s.lib"
-				OutputFile="$(ProjectDir)libs\$(ProjectName)d.dll"
-				AdditionalLibraryDirectories="&quot;$(ProjectDir)libs&quot;"
+				OutputFile="$(OutDir)$(ProjectName).dll"
+				AdditionalLibraryDirectories="$(SolutionDir)$(SolutionName)\lib\debug"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(IntDir)/$(TargetName).pdb"
+				ImportLibrary="$(SolutionDir)$(SolutionName)\lib\debug\$(TargetName).lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -92,7 +95,7 @@
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
-				RemoteDirectory=""
+				RemoteDirectory="%CSIDL_PROGRAM_FILES%\$(SolutionName)"
 				RegisterOutput="0"
 				AdditionalFiles=""
 			/>
@@ -101,15 +104,15 @@
 		</Configuration>
 		<Configuration
 			Name="Release|M8SDK (ARMV4I)"
-			OutputDirectory="$(SolutionDir)\$(SolutionName)\$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)\$(SolutionName)\$(ConfigurationName)\obj"
+			OutputDirectory="$(SolutionDir)$(SolutionName)\bin\"
+			IntermediateDirectory="$(SolutionDir)$(SolutionName)\obj\release\"
 			ConfigurationType="2"
-			UseOfMFC="1"
+			UseOfMFC="0"
 			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp $(ProjectDir)include\&#x0D;&#x0A;rem copy $(ProjectDir)UiCommon\*.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)MzConfig\MzConfig.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzCommon.h $(ProjectDir)include\&#x0D;&#x0A;copy $(ProjectDir)cMzCommonDll.h $(ProjectDir)include\&#x0D;&#x0A;"
+				CommandLine="copy $(ProjectDir)DataBase\sqlite3x\sqlite3x.hpp &quot;$(SolutionDir)$(SolutionName)\include\&quot;&#x0D;&#x0A;copy $(ProjectDir)cMzConfig\cMzConfig.h &quot;$(SolutionDir)$(SolutionName)\include\&quot;&#x0D;&#x0A;copy $(ProjectDir)cMzCommon.h &quot;$(SolutionDir)$(SolutionName)\include\&quot;&#x0D;&#x0A;copy $(ProjectDir)cMzCommonDll.h &quot;$(SolutionDir)$(SolutionName)\include\&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -128,8 +131,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
-				AdditionalIncludeDirectories="&quot;$(ProJectDir)include&quot;"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);STANDARDSHELL_UI_MODEL;COMMON_EXPORTS"
+				AdditionalIncludeDirectories="$(SolutionDir)$(SolutionName)\include"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);COMMON_EXPORTS"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -150,9 +153,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /SUBSYSTEM:WINDOWSCE,6.00"
-				AdditionalDependencies="mzfc.lib libsqlitece_s.lib coredll.lib corelibc.lib"
-				OutputFile="$(ProjectDir)libs\$(ProjectName).dll"
-				AdditionalLibraryDirectories="&quot;$(ProjectDir)libs&quot;"
+				AdditionalDependencies="mzfc.lib libsqlitece_s.lib"
+				OutputFile="$(OutDir)$(ProjectName).dll"
+				AdditionalLibraryDirectories="$(SolutionDir)$(SolutionName)\lib"
+				ImportLibrary="$(SolutionDir)$(SolutionName)\lib\$(TargetName).lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -171,10 +175,11 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="upx &quot;$(TargetPath)&quot;"
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
-				RemoteDirectory=""
+				RemoteDirectory="%CSIDL_PROGRAM_FILES%\$(SolutionName)"
 				RegisterOutput="0"
 				AdditionalFiles=""
 			/>
