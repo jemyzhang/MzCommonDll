@@ -46,7 +46,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				AdditionalIncludeDirectories="$(SolutionDir)$(SolutionName)\include"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_USRDLL;$(ARCHFAM);$(_ARCHFAM_)"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_USRDLL;$(ARCHFAM);$(_ARCHFAM_);COMMON_EXPORTS"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -105,7 +105,7 @@
 		<Configuration
 			Name="Release|M8SDK (ARMV4I)"
 			OutputDirectory="$(SolutionDir)$(SolutionName)\bin\"
-			IntermediateDirectory="$(SolutionDir)$(SolutionName)\obj\release\"
+			IntermediateDirectory="$(SolutionDir)$(SolutionName)\obj\$(ProjectName)\release\"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			CharacterSet="1"
